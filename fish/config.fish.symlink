@@ -1,0 +1,47 @@
+# Fish Shell Config
+
+# Install Fisher (if not installed already)
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
+
+# Setup PATH and ENV variables
+#
+# Dotfiles home
+set -x DOTFILES $HOME/.dotfiles
+
+# Vim
+set -x EDITOR vim
+
+# Android
+set -x ANDROID_HOME $HOME/Library/Android/sdk
+# Add Android tools to path
+set -gx PATH $PATH $ANDROID_HOME/tools
+set -gx PATH $PATH $ANDROID_HOME/platform-tools
+
+# Java
+# Export Java 8 for Gradle
+set -x JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+
+# Aliases
+#
+# General
+alias reload 'exec fish'
+alias dotfiles 'cd $DOTFILES'
+
+# Homebrew
+alias bubu 'brew update; brew upgrade; brew cleanup'
+
+# Mac OS
+# Show/hide hidden files in Finder
+alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Copy public key to clipboard
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
