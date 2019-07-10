@@ -18,6 +18,7 @@ set -x EDITOR vim
 # Android
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 # Add Android tools to path
+set -gx PATH $PATH $ANDROID_HOME/emulator
 set -gx PATH $PATH $ANDROID_HOME/tools
 set -gx PATH $PATH $ANDROID_HOME/platform-tools
 
