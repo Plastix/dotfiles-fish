@@ -17,7 +17,7 @@ There's a few special files in the hierarchy.
 Run:
 
 ```sh
-git clone git@github.com:Plastix/dotfiles.git ~/.dotfiles
+git clone git@github.com:Plastix/dotfiles-fish.git ~/.dotfiles
 cd ~/.dotfiles
 ./bootstrap.sh
 ```
