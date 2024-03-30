@@ -46,3 +46,5 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 # Copy public key to clipboard
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+atuin init fish | source

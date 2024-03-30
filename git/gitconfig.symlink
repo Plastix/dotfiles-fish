@@ -1,8 +1,13 @@
+# See https://jvns.ca/blog/2024/02/16/popular-git-config-options/#pull-ff-only-or-pull-rebase-true
+# for some other great options
+
 # Local/private config goes in the include
 [include]
     path = ~/.gitconfig.local
+
 [core]
-    editor = "vim"
+    editor = vim
+    pager = delta
     autocrlf = false
     excludesfile = ~/.gitignore
 
@@ -46,28 +51,14 @@
 [merge]
     # Always avoid merge commits
     ff = only
+    conflictstyle = zdiff3
 
 [push]
     # Send tags to remote on every push
     followTags = true
 
-# Pretty colors!
 [color]
     ui = always
-
-[color "diff"]
-    meta = yellow bold
-    commit = green bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
 
 [advice]
     statusHints = false
@@ -79,7 +70,22 @@
     clean = git-media-clean %f
     smudge = git-media-smudge %f
 
-[pager]
-    # Fancy looking diffs!
-    diff = diff-so-fancy | less --tabs=1,5 -RFX
-    show = diff-so-fancy | less --tabs=1,5 -RFX
+[interactive]
+    diffFilter = delta --color-only
+
+[diff]
+    colorMoved = default
+
+[delta]
+    navigate = true
+    line-numbers = true
+    auto-detection
+
+[rebase]
+    autosquash = true
+
+[init]
+	defaultBranch = main
+
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"
